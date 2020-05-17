@@ -44,7 +44,7 @@ The `Product` template will need several fields:
 
 [source,bash]
 ----
-$ rails generate model Product title:string price:decimal published:boolean user:belongs_to
+$ rails generate model Product title:string price:decimal published:boolean user:references
 Running via Spring preloader in process 1476
       invoke  active_record
       create    db/migrate/20190608205942_create_products.rb
@@ -67,7 +67,7 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.string :title
       t.decimal :price
       t.boolean :published
-      t.belongs_to :user, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end
